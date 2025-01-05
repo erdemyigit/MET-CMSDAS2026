@@ -18,7 +18,7 @@ keypoints:
 
 ## MET Corrections
 
-$$\vec{p}_{T}^{miss,~raw} = - \sum_{i \in all} \vec{p}_{T, i} $$
+$$\vec{p}_{T}^{~miss,~raw} = - \sum_{i \in all} \vec{p}_{T, i} $$
 
 The MET objects described earlier (PF-MET and PUPPI-MET) are referred to as _raw_ MET, and they are systematically different from the _true_ MET, which corresponds to the transverse momentum carried by invisible particles.
 This difference arises from factors such as the non-compensating nature of the calorimeters, calorimeter thresholds, and detector misalignment, among others.
