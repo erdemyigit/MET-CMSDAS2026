@@ -11,7 +11,7 @@ objectives:
 - "Learn about measuring MET performance."
 - "Understand MET phi modulation and how to account for it."
 keypoints:
-- "Inaccurate MET estimation can arise from sources such as nonlinearity in the calorimeter's response to hadrons, minimum energy thresholds in the calorimeters, and pT thresholds or inefficiencies in track reconstruction, and is mitigated through calibration procedures described in this exercise."
+- "Inaccurate MET estimation can arise from sources such as non-linearity in the calorimeter's response to hadrons, minimum energy thresholds in the calorimeters, and pT thresholds or inefficiencies in track reconstruction, and is mitigated through calibration procedures described in this exercise."
 - "Type-1 MET is the default MET calibration recommended in CMS."
 - "Type-1 smear MET improves the data-MC agreement, and JME POG recommends analysts to evaluate its impact in your studies."
 ---
@@ -64,7 +64,7 @@ $$\vec{p}_{T}^{~miss,~Type-1} = - \sum_{i}^{nJets} \vec{p}_{T, jet}^{~corr} - \s
 > Type-I corrected MET is the default MET calibration required in all analyses.
 {: .callout}
 
-### Type-1 Smear MET (For MC Only)
+### Type-1 Smear MET (For MC only)
 
 In MC simulations, jets are smeared to achieve better agreement with data. This smearing of _MC jets_ can additionally be propagated to MET, resulting in **Type-1 smear MET**.
 

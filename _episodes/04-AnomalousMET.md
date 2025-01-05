@@ -9,9 +9,8 @@ objectives:
 - "Learn about anomalous MET"
 - "Learn about the Noisy event filters and their implementation."
 keypoints:
-- "Jet substructure is the field study the internakl structure of high pt jets, usually clustered with a bigger jet radius (AK8)."
-- "Grooming algorithms like softdrop, and substructure variables like the nsubjettiness ratio help us to identify the origin of these jets."
-- "Over the years more state-of-the-art taggers involving ML have been implemented in CMS. Those help us indentify more effectively boosted jets."
+- "Large MET in an event may be caused by detector noise, cosmic rays, and beam-halo particles. Such MET with uninteresting origins is called false MET, anomalous MET, or fake MET and can be an indication of problematic event reconstruction."
+- "Events with anomalos mets can be rejected using the Noisy event filters."
 ---
 
 > ## After following the instructions in the setup:
@@ -26,7 +25,7 @@ keypoints:
 
 ## What is anomalous MET? 
 
-Anomalous MET refers to situations where the measured MET in a particle collision event deviates from what is expected due to various factors, such as reconstruction failures, detector malfunctions, or background noise.
+Anomalous MET refers to events where the measured MET deviates from what is expected due to various factors, such as reconstruction failures, detector malfunctions, or background noise.
 These anomalous MET events can arise from:
 - **Detector Issues:** Malfunctions or mismeasurements in detectors, such as the electromagnetic calorimeter (ECAL) or hadronic calorimeter (HCAL), leading to spurious energy deposits.
 - **Reconstruction Failures:** Errors in reconstructing particle tracks or energy, including issues with jets, leptons, or unclustered energy, that result in inaccurate MET calculations.

@@ -4,11 +4,11 @@ title: Setup
 
 # Run exercises in cmslpc
 
-Open a terminal/console, connect to cmslpc-sl7 and prepare your working area:
+Open a terminal/console, connect to cmslpc-el9 and prepare your working area:
 
 ~~~
 kinit yourlpcusername@FNAL.GOV
-ssh -Y yourlpcusername@cmslpc-sl7.fnal.gov
+ssh -Y yourlpcusername@cmslpc-el9.fnal.gov
 ~~~
 {: .language-bash}
 
