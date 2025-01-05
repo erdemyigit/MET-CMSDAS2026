@@ -1,5 +1,5 @@
 ---
-title: "High anomalous MET in events and it's treatment"
+title: "Handling Anomalous MET Events"
 teaching: 20
 exercises: 10
 questions:
