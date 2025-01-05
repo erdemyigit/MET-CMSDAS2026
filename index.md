@@ -4,7 +4,7 @@ root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
 
-<img src="fig/MET.png" alt="" style="width: 400px;"/>
+<img src="fig/met_schematic.png" alt="" style="width: 400px;"/>
 
 This tutorial will give you the basics you need to deal with missing transverse energy (MET) in your analysis. We start with an introduction to MET reconstruction and the fundamental concepts underlying its calculation, ensuring a solid foundation for understanding its role in physics analyses. Next, we delve into MET calibration and uncertainties, providing the tools to accurately account for and quantify potential deviations. Finally, we cover the identification of sources that can lead to artificial MET and discuss Noisy Event filters (formerly known as MET filters) designed to mitigate such effects, equipping you to confidently handle MET-related challenges in your research.
 
@@ -37,7 +37,7 @@ _Follow the CMS workbook on MET analysis:_ [WorkBookMETAnalysis](https://twiki.c
 
 ### Facilitators CMSDAS LPC 2025
 
-<img src="fig/photo_facilitators.png" alt="" style="width:70%">
+<img src="fig/photo_facilitators.jpeg" alt="" style="width:70%">
 
 
 ### Support
