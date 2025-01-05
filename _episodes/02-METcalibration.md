@@ -76,7 +76,7 @@ $$\vec{p}_{T}^{~miss,~Type-1} = - \sum_{i}^{nJets} \vec{p}_{T, jet}^{~corr} - \s
 
 <figure>
   <img src="../fig/episode2/raw_vs_type1.png" alt="" style="width:60%">
-  <center><figcaption>We will revisit this in MET perfornce, but this plot shows the MET scale for raw PF MET vs Type-1 PF MET.</figcaption></center>
+  <center><figcaption>We will revisit this in MET performance, but this figure shows a comarison between the MET scale for raw PF MET vs Type-1 PF MET.</figcaption></center>
 </figure>
 
 ### Type-1 Smear MET (For MC only)
@@ -133,7 +133,7 @@ In this exercise, we will consider three sources of uncertainty:
 2. **Jet energy resolution**  
 3. **Unclustered energy**
 
-We will use the same file as in [Exercise 1.1](https://garvitaa.github.io/METDAStest/01-MET101/index.html#exercise-11).
+We will use the same file as in [Exercise 1.1](https://garvitaa.github.io/METDAS/01-MET101/index.html#exercise-11).
 
 Execute the following commands inside the `cmssw-el7` singularity shell:
 
