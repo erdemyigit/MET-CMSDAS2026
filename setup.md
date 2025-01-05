@@ -45,7 +45,6 @@ voms-proxy-init -voms cms -valid 192:00
 ~~~
 {: .language-bash}
 
-
 ## Useful settings
 
 If you like seeing your working directory in the commandline, you can do also this by adding a line to ~/.bashrc and activating it with the 'source' command:

@@ -13,14 +13,14 @@ keypoints:
 - "Events with anomalos mets can be rejected using the Noisy event filters."
 ---
 
-> ## After following the instructions in the setup:
+> ## After following the instructions in the setup, make sure you are using the SLC7 singularity shell:
 >
 > ~~~
-> FIXME
+> cd $CMSSW_BASE/src/CMSDAS_MET
+> cmssw-el7
+> cmsenv
 > ~~~
 > {: .language-bash}
->
-> This will open a jupyter notebook tree with various notebooks. 
 {: .callout}
 
 ## What is anomalous MET? 

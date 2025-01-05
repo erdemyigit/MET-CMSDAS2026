@@ -6,15 +6,28 @@ questions:
 - "Why do we need to calibrate MET? How is the performance measured?"
 - "What are the different ways of calibrating MET at CMS?"
 - "What is MET phi modulation? How to correct for it?"
+- How is the uncertainty on MET estimated?
 objectives:
 - "Learn about the MET calibration procedure and techniques used at CMS."
 - "Learn about measuring MET performance."
 - "Understand MET phi modulation and how to account for it."
+- "Learn about MET uncertainty sources and to get the MET uncertainty in MiniAOD analyses."
 keypoints:
-- "Inaccurate MET estimation can arise from sources such as non-linearity in the calorimeter's response to hadrons, minimum energy thresholds in the calorimeters, and pT thresholds or inefficiencies in track reconstruction, and is mitigated through calibration procedures described in this exercise."
-- "Type-1 MET is the default MET calibration recommended in CMS."
-- "Type-1 smear MET improves the data-MC agreement, and JME POG recommends analysts to evaluate its impact in your studies."
+- "Inaccurate MET estimation can result from sources such as non-linearity in the calorimeter's response to hadrons, minimum energy thresholds in the calorimeters, and pT thresholds or inefficiencies in track reconstruction. These issues are mitigated through calibration procedures discussed in this exercise."
+- "Type-1 MET is the default MET calibration recommended by CMS."
+- "Type-1 smear MET enhances data-MC agreement, and JME POG advises analysts to assess its impact in their studies."
+- "MET is influenced by uncertainties from all contributing objects, including jets, leptons, photons, and unclustered energy. Systematic variations in the scale and resolution of each component must be propagated to the MET calculation to evaluate their impact on the analysis."
 ---
+
+> ## After following the instructions in the setup, make sure you are using the SLC7 singularity shell:
+>
+> ~~~
+> cd $CMSSW_BASE/src/CMSDAS_MET
+> cmssw-el7
+> cmsenv
+> ~~~
+> {: .language-bash}
+{: .callout}
 
 ## MET Corrections
 
@@ -56,8 +69,11 @@ Thus, the Type-I corrected MET is:
 
 $$\vec{p}_{T}^{~miss,~Type-1} = \vec{p}_{T}^{~miss,~raw} - \sum_{i}^{nJets} (\vec{p}_{T, jet}^{~corr} - \vec{p}_{T, jet}^{~uncorr}) $$
 
+or equivalently:
 
 $$\vec{p}_{T}^{~miss,~Type-1} = - \sum_{i}^{nJets} \vec{p}_{T, jet}^{~corr} - \sum_{i \in uncl} \vec{p}_{T, i}$$
+
+<img src="../fig/episode2/raw_vs_type1.png" alt="" style="width:60%">
 
 > ## Remember
 > PF MET is the recommended MET algorithm in Run~2, and PUPPI MET is recommended for Run~3 analyses.
@@ -83,12 +99,119 @@ The possible causes of this modulation include:
 
 The amplitude of the modulation increases roughly linearly with the number of pile-up interactions.
 
-## MET performance
-A well-measured Z boson or photon provides a unique event axis and a precise momentum scale for evaluating MET performance.
-To achieve this, the response and resolution of MET are studied in samples where a Z boson decays to a pair of electrons or muons, or in events with an isolated photon.
-**Such events should have little to no genuine MET.**
-The MET performance is then assessed by comparing the momentum of the vector boson to that of the hadronic recoil system.
-The hadronic recoil system is defined as the vector sum of the transverse momenta of all PF candidates, excluding the vector boson (or its decay products in the case of Z boson decay).
+## MET Uncertainty
+
+For analyses sensitive to missing transverse energy — those involving large MET contributions from neutrinos or other signatures — it is necessary to break MET into its individual components.
+Since MET is calculated as the vector sum of contributions from jets, electrons, muons, taus, photons, and "unclustered energy" (energy not associated with reconstructed objects), the resolution and scale of each component must be propagated to MET.
+These uncertainties are then treated as separate nuisance parameters each arising from a different physics object.
+
+The physics objects that contribute the most are:
+- **Jets:** Jet energy scale (JES) and jet energy resolution (JER) uncertainties directly impact MET, as jets typically contribute significantly to the total energy.
+- **Unclustered Energy:** Unclustered energy includes contributions from particles not grouped into jets, leptons, or photons. The uncertainty arises from the resolution of individual particle types, such as charged hadrons, neutral hadrons, photons, and hadronic forward (HF) particles.
+- **Leptons:** This includes tau leptons, electrons, muons, and photons. Scale uncertainties for these objects need to be propagated to MET, as even small variations can affect its calculation.
+
+The scale and resolution of each component must be systematically varied within their respective uncertainties. These variations are then propagated to the MET calculation to calculate their impact on the analysis.
+
+## Exercise 2.1
+
+In this section, we will focus on accessing the MET object(s) in miniAOD, including:
+- Different MET calibrations
+- MET uncertainties
+
+Firstly, we will access different MET flavors: the **raw PFMET**, the **Type-1 PFMET** (the default MET flavor in CMS), and the **Type-1 smeared PFMET**.  
+In Type-1 MET, corrections from the jet energy scale are propagated to MET, whereas in Type-1 smeared MET, corrections from both the jet energy scale and the jet energy resolution are applied.
+
+MET relies on accurate momentum/energy measurements of reconstructed physics objects, including muons, electrons, photons, hadronically decaying taus, jets, and unclustered energy (UE). The latter refers to contributions from PF candidates not associated with any of the previously mentioned physics objects.  
+
+Since uncertainties in MET measurements strongly depend on the event topology, uncertainties in the momenta of all reconstructed objects are propagated to MET. This is done by varying the momentum estimate of each object within its uncertainty and recomputing MET.  
+In this exercise, we will consider three sources of uncertainty:
+1. **Jet energy scale**  
+2. **Jet energy resolution**  
+3. **Unclustered energy**
+
+We will use the same file as in [Exercise 1.1](https://garvitaa.github.io/METDAStest/01-MET101/index.html#exercise-11).
+
+### Instructions
+
+Execute the following commands inside the `cmssw-el7` singularity shell:
+
+~~~
+cd $CMSSW_BASE/src/CMSDAS_MET
+cmsRun CMSDAS_MET_Analysis/test/run_CMSDAS_MET_Exercise2_cfg.py
+~~~
+{: .language-bash}
+
+This script will:
+- Read the `slimmedMETs` collection
+- Print the transverse momentum ($p_T$) and azimuthal angle ($\phi$) of the MET object for each event
+- Print the values of various sources of systematic uncertainties  
+Additionally, the script demonstrates how to access MET with different levels of corrections applied. By default, Type-1 MET is selected.
+
+The analyzer being run using is command is `CMSDAS_MET_Analysis/plugins/CMSDAS_MET_AnalysisExercise2.cc`. The printout looks like the following:
+```
+Begin processing the 1st record. Run 1, Event 138728702, LumiSection 513811 on stream 0 at 05-Jan-2025 14:40:03.942 CST
+ MET : 
+  pt [GeV] = 4.42979
+  phi [rad] = 2.92774
+ MET uncertainties : 
+  JES up/down [GeV] = 2.22909/6.63454
+  JER up/down [GeV] = 4.34603/4.51426
+  Unc up/down [GeV] = 9.2058/6.06604
+ MET corrections : 
+  Raw PFMET pt [GeV] = 10.7137
+  PFMET-type1 pt [GeV] = 4.42979
+  Smeared PFMET-type1 pt [GeV] = 4.40847
+  .......
+  .......
+```
+
+> ## Question 2.1
+> Compare the distributions of the above quantities and get a feeling about their effect. Wheer are these distrucutions being stored?
+{: .challenge}
+
+> ## Solution 2.1
+> The various MET histograms (raw, Type-1, JES Up, JER down etc.) are being stored at `./outputs/cmsdas_met_exercise2.root`
+{: .solution}
+
+## Exercise 2.2
+Now we make the following modifications to the configuration script `CMSDAS_MET_Analysis/test/run_CMSDAS_MET_Exercise2_cfg.py`:
+- Prevent printouts by setting `doprints` to `False`.
+Reduce the frequency of the report from "every" event to "every 10000" events by `modifying process.MessageLogger.cerr.FwkReport.reportEvery`.
+Run over all events in the file by updating `process.maxEvent`s from 10 to -1.
+
+After these modifications, please re-run the configuration with the following command:
+~~~
+cmsRun CMSDAS_MET_Analysis/test/run_CMSDAS_MET_Exercise2_cfg.py
+~~~
+{: .language-bash}
+
+Once the process completes (it will take a few seconds), it will produce a ROOT file. We will then compare the 1D distribution of different MET flavors in a Z+jets sample (which has no genuine MET).
+To generate the plot, run the following commands:
+
+~~~
+cd scripts
+root -l 'cmsdasmetplotsexercise2.C("step2a")'
+~~~
+{: .language-bash}
+
+> ## Looking at the different MET calibration algorithms
+> <img src="../fig/episode2/Figure_2p2.png" alt="" style="width:50%">
+> What do you observe?
+{: .discussion}
+
+## Exercise 2.3
+ext, we will focus on Type-1 PF MET and study the impact of various uncertainties, including Unclustered, JES, and JER.
+To generate the corresponding plot, use the following command:
+
+~~~
+root -l 'cmsdasmetplotsexercise2.C("step2b")'
+~~~
+{: .language-bash}
+
+> ## Looking at the different sources of MET uncertaintu
+> <img src="../fig/episode2/Figure_2p3.png" alt="" style="width:50%">
+> What do you observe?
+{: .discussion}
 
 
 {% include links.md %}
