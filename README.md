@@ -1,5 +1,4 @@
-# CMS Data Analysis School 2023: Jet Analysis Short Exercise 
-
+# CMS Data Analysis School 2025: MET Analysis Short Exercise 
 
 This repository generates the corresponding lesson website from [The Carpentries](https://carpentries.org/) repertoire of lessons. 
 
@@ -12,22 +11,21 @@ We'd like to ask you to familiarize yourself with our [Contribution Guide](CONTR
 the [more detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and even
 how to write new episodes.
 
-Please see the current list of [issues][FIXME] for ideas for contributing to this
-repository. For making your contribution, we use the GitHub flow, which is
+For making your contribution, we use the GitHub flow, which is
 nicely explained in the chapter [Contributing to a Project](http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) in Pro Git
 by Scott Chacon.
 Look for the tag ![good_first_issue](https://img.shields.io/badge/-good%20first%20issue-gold.svg). This indicates that the maintainers will welcome a pull request fixing this issue.  
-
 
 ## Maintainer(s)
 
 There have been many maintainers of these exercises during the years. Current maintainers of this lesson are 
 
-* [Alejandro Gomez Espinosa](mailto:alejandro.gomez@cern.ch)
+* [Garvita Agarwal](mailto:garvita.agarwal@cern.ch)
 
 
 ## Authors
 
+This lesson has been prepared by consolidating the materials from previous facilitators.
 A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
 
 ## Citation
