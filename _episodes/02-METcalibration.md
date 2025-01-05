@@ -32,32 +32,32 @@ It propagates the jet energy corrections (JEC) to MET. Specifically, the Type-I 
 
 Particles can be classified into two disjoint sets: those that are clustered as jets and those that remain unclustered.
 
-$$\vec{p}_{T}^{miss,~raw} = - \sum_{i \in jets} \vec{p}_{T, i} - \sum_{i \in uncl} \vec{p}_{T, i}$$
+$$\vec{p}_{T}^{~miss,~raw} = - \sum_{i \in jets} \vec{p}_{T, i} - \sum_{i \in uncl} \vec{p}_{T, i}$$
 
 The first vector sum corresponds to the total pT of all jets:
 
-$$\sum_{i \in jets} \vec{p}_{T, i} = \sum_{i}^{nJets} \vec{p}_{T, jet}^{uncorr}$$
+$$\sum_{i \in jets} \vec{p}_{T, i} = \sum_{i}^{nJets} \vec{p}_{T, jet}^{~uncorr}$$
 
 The superscript "uncorr" indicates that the jet energy correction (JEC) has not yet been applied to these jets.
 
 The Type-I correction replaces the raw jet pT with the corrected jet pT. The Type-I correction can be expressed as the difference between two vector sums:
 
-$$C_{T}^{Type-1} = \sum_{i}^{nJets} \vec{p}_{T, jet}^{uncorr} - \sum_{i}^{nJets} \vec{p}_{T, jet}^{corr}$$
+$$C_{T}^{~Type-1} = \sum_{i}^{nJets} \vec{p}_{T, jet}^{~uncorr} - \sum_{i}^{nJets} \vec{p}_{T, jet}^{~corr}$$
 
 or equivalently:
 
-$$C_{T}^{Type-1} = \sum_{i \in jets} \vec{p}_{T, i} - \sum_{i}^{nJets} \vec{p}_{T, jet}^{corr}$$
+$$C_{T}^{~Type-1} = \sum_{i \in jets} \vec{p}_{T, i} - \sum_{i}^{nJets} \vec{p}_{T, jet}^{~corr}$$
 
 This vector term can be added to the raw MET to obtain the Type-1 corrected MET:
 
-$$\vec{p}_{T}^{miss,~Type-1} = \vec{p}_{T}^{miss,~raw} + C_{T}^{Type-1}$$
+$$\vec{p}_{T}^{~miss,~Type-1} = \vec{p}_{T}^{~miss,~raw} + C_{T}^{~Type-1}$$
 
 Thus, the Type-I corrected MET is:
 
-$$\vec{p}_{T}^{miss,~Type-1} = \vec{p}_{T}^{miss,~raw} - \sum_{i}^{nJets} (\vec{p}_{T, jet}^{corr} - \vec{p}_{T, jet}^{uncorr}) $$
+$$\vec{p}_{T}^{~miss,~Type-1} = \vec{p}_{T}^{~miss,~raw} - \sum_{i}^{nJets} (\vec{p}_{T, jet}^{~corr} - \vec{p}_{T, jet}^{~uncorr}) $$
 
 
-$$\vec{p}_{T}^{miss,~Type-1} = - \sum_{i}^{nJets} \vec{p}_{T, jet}^{corr} - \sum_{i \in uncl} \vec{p}_{T, i}$$
+$$\vec{p}_{T}^{~miss,~Type-1} = - \sum_{i}^{nJets} \vec{p}_{T, jet}^{~corr} - \sum_{i \in uncl} \vec{p}_{T, i}$$
 
 > ## Remember
 > PF MET is the recommended MET algorithm in Run~2, and PUPPI MET is recommended for Run~3 analyses.
