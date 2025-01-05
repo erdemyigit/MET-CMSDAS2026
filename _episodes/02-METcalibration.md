@@ -131,8 +131,6 @@ In this exercise, we will consider three sources of uncertainty:
 
 We will use the same file as in [Exercise 1.1](https://garvitaa.github.io/METDAStest/01-MET101/index.html#exercise-11).
 
-### Instructions
-
 Execute the following commands inside the `cmssw-el7` singularity shell:
 
 ~~~
@@ -176,8 +174,8 @@ Begin processing the 1st record. Run 1, Event 138728702, LumiSection 513811 on s
 ## Exercise 2.2
 Now we make the following modifications to the configuration script `CMSDAS_MET_Analysis/test/run_CMSDAS_MET_Exercise2_cfg.py`:
 - Prevent printouts by setting `doprints` to `False`.
-Reduce the frequency of the report from "every" event to "every 10000" events by `modifying process.MessageLogger.cerr.FwkReport.reportEvery`.
-Run over all events in the file by updating `process.maxEvent`s from 10 to -1.
+- Reduce the frequency of the report from "every" event to "every 10000" events by `modifying process.MessageLogger.cerr.FwkReport.reportEvery`.
+- Run over all events in the file by updating `process.maxEvent`s from 10 to -1.
 
 After these modifications, please re-run the configuration with the following command:
 ~~~
@@ -200,7 +198,7 @@ root -l 'cmsdasmetplotsexercise2.C("step2a")'
 {: .discussion}
 
 ## Exercise 2.3
-ext, we will focus on Type-1 PF MET and study the impact of various uncertainties, including Unclustered, JES, and JER.
+Next, we will focus on Type-1 PF MET and study the impact of various uncertainties, including Unclustered, JES, and JER.
 To generate the corresponding plot, use the following command:
 
 ~~~
