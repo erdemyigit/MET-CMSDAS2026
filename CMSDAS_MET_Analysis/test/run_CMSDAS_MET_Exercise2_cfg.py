@@ -8,12 +8,12 @@ process.load('Configuration.StandardSequences.Services_cff')
 process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
 process.load('Configuration.StandardSequences.MagneticField_cff')
 process.load('FWCore.MessageService.MessageLogger_cfi')
-process.MessageLogger.cerr.FwkReport.reportEvery = 10000
+process.MessageLogger.cerr.FwkReport.reportEvery = 1
 
 
 process.TFileService = cms.Service("TFileService", fileName = cms.string("./outputs/cmsdas_met_exercise2.root") )
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(10) )
 
 process.source = cms.Source(
     "PoolSource",
@@ -24,7 +24,7 @@ process.source = cms.Source(
     )
 
 process.cmsdasmetexercise2 = cms.EDAnalyzer('CMSDAS_MET_AnalysisExercise2',
-                                    doprints = cms.bool(False),
+                                    doprints = cms.bool(True),
                                     mets     = cms.InputTag("slimmedMETs")
                                     )
 
