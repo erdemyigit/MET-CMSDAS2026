@@ -37,7 +37,7 @@ _Follow the CMS workbook on MET analysis:_ [WorkBookMETAnalysis](https://twiki.c
 
 ### Facilitators CMSDAS LPC 2025
 
-<img src="fig/photo_facilitators.jpeg" alt="" style="width:80%">
+<img src="fig/photo_facilitators.pdf" alt="" style="width:80%">
 
 
 ### Support
